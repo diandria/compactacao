@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-int TAM_STR = 5;
+int TAM_STR;
 
-char compacta(char sequencia[]) {
+void prog(char sequencia[]) {
     char sbCompactado[TAM_STR];
 
     int i = 0;
@@ -11,6 +11,7 @@ char compacta(char sequencia[]) {
     while(i < TAM_STR){
         int nOcorrencia = 0;
         char ch = sequencia[i];
+        
         int j = i;
 
         while((j < TAM_STR) && (sequencia[j]==ch)){
@@ -18,28 +19,20 @@ char compacta(char sequencia[]) {
             j++;
             i++;
         }
-
-        char cAdd = ch;
-
-        if (nOcorrencia > 0){ 
-            char num[10];
-            
-            sprintf(num,"%i",nOcorrencia);
-
-            strcat(sbCompactado, num);
-            strcat(sbCompactado, "-");
-
+        printf("%c",ch);       
+        printf("%i",nOcorrencia);
+        if(i != TAM_STR){
+            printf("-");      
         }
+        
     }
-    return sbCompactado[TAM_STR];
 }
 
 int main() {
-    char sequencia[] = "aaaaa";
+    char sequencia[] = "aaaaaaabbbbbaaaaaaaaaa";
+    TAM_STR = strlen(sequencia);
 
-    char vetor = compacta(sequencia);
-
-    printf("final: %c", vetor);
+    desprog(sequencia);
 
     return 0;
 }
